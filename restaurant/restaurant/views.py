@@ -297,3 +297,11 @@ class FilterName(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = Restaurant.objects.annotate(min_name=Min('name')).order_by('min_name')
         return queryset
+
+class FilterRestaurantFriendly(generics.ListCreateAPIView):
+    serializer_class = RestaurantSerializer
+
+    def get_queryset(self):
+        queryset = Restaurant.objects.filter(is_vegetarian_friendly=True)
+        return queryset
+

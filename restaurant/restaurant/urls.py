@@ -34,5 +34,6 @@ urlpatterns = [
     path("statistics/",views.menu_statistics),
     path("statistics/",views.menu_statistics) ,
     path("restaurants/<int:pk>/menus/",views.MenuRestaurantView.as_view()),
-    path('restaurants-ordered-by-name', views.FilterName.as_view())
+    path('restaurants-ordered-by-name', views.FilterName.as_view()),
+    path('restaurants-ordered-by-vegetarian-friendly', views.FilterRestaurantFriendly.as_view())
 ]
