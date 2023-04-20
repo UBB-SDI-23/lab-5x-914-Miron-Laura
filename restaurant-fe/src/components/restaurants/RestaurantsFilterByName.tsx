@@ -19,9 +19,10 @@ import { Link } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import { BACKEND_API_URL } from "../../constants";
 import { Restaurant} from "../../models/Restaurant";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 
-export const RestaurantFilter= () => {
+export const RestaurantFilterByName = () => {
     const[loading, setLoading] = useState(true)
     const [restaurants, setRestaurants] = useState([]);
 
@@ -36,6 +37,10 @@ export const RestaurantFilter= () => {
     
     return (
     <Container>
+        <IconButton component={Link} sx={{ float: 'left'}} to={`/restaurants`}>
+            <ArrowBackIcon />
+        </IconButton>{""}
+
         <h1 style={{marginTop:"65px"}}>All restaurants ordered by name</h1>
 
         {loading && <CircularProgress />}
@@ -66,7 +71,7 @@ export const RestaurantFilter= () => {
                                 <TableCell align="center">{restaurants.adress}</TableCell>
                                 <TableCell align="center">{restaurants.phone_number}</TableCell>
                                 <TableCell align="center">{restaurants.cuisine_type}</TableCell>
-                                <TableCell align="center">{restaurants.is_vegetarian_friendly}</TableCell>
+                                <TableCell align="center">{restaurants.is_vegetarian_friendly === true ?  'Yes' : 'No'}</TableCell>
                             </TableRow>
                         ))}
                 </TableBody>

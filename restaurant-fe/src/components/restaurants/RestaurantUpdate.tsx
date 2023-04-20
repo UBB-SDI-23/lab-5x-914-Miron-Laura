@@ -11,6 +11,20 @@ export const UpdateRestaurant = () => {
     const { restaurantId } = useParams();
     const navigate = useNavigate();
     const [ vegetarian, setVegetarian ] = useState(false);
+    const [ restaurantDetails, setRestaurantDetails ] = useState<Restaurant>();
+    
+
+    const fetchRestaurant = async () => {
+        const response = await fetch(`${BACKEND_API_URL}/restaurants/${restaurantId}`);
+        const restaurant = await response.json();
+        setRestaurantDetails(restaurant);
+    };
+
+    useEffect(() => {
+        fetchRestaurant()
+    }, [restaurantId])
+
+
     const [restaurant, setRestaurant] = useState<Restaurant>({
         id: parseInt(String(restaurantId)),
         name: "",

@@ -10,6 +10,7 @@ import {
 	Container,
 	IconButton,
 	Tooltip,
+	Button,
 } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from "react";
@@ -20,8 +21,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddIcon from "@mui/icons-material/Add";
 import { Restaurant } from "../../models/Restaurant";
+import { useNavigate } from "react-router-dom";
 
 export const AllRestaurants = () => {
+
+	const navigate = useNavigate();
+
 	const [loading, setLoading] = useState(false);
 	const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
@@ -38,6 +43,29 @@ export const AllRestaurants = () => {
 	return (
 		<Container>
 			<h1>All restaurants</h1>
+
+			<div style={{
+				marginTop: '20px'
+			}}>
+				<Button 
+					onClick = {() => navigate("/restaurants-ordered-by-name")}
+					style={{
+						border: '2px solid blue',
+						marginRight: '10px',
+					}}
+					>
+					Restaurants ordered by Name
+				</Button>
+				<Button 
+					onClick = {() => navigate("/restaurants-ordered-by-vegetarian")}
+					style={{
+						border: '2px solid blue',
+					}}
+					>
+					Vegetariant Restaurants
+				</Button>
+			</div>
+
 
 			{loading && <CircularProgress />}
 			{!loading && restaurants.length === 0 && <p>No restaurants found</p>}
