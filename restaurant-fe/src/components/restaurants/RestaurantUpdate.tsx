@@ -15,13 +15,13 @@ export const UpdateRestaurant = () => {
     
 
     const fetchRestaurant = async () => {
-        const response = await fetch(`${BACKEND_API_URL}/restaurants/${restaurantId}`);
+        const response = await fetch(`${BACKEND_API_URL}/restaurants/${restaurantId}/`);
         const restaurant = await response.json();
         setRestaurantDetails(restaurant);
     };
 
     useEffect(() => {
-        fetchRestaurant()
+         fetchRestaurant()
     }, [restaurantId])
 
 
@@ -49,6 +49,8 @@ export const UpdateRestaurant = () => {
         navigate("/restaurants");
     };
 
+    console.log('restId', restaurantDetails)
+
     return (
         <Container>
             <Card>
@@ -62,8 +64,10 @@ export const UpdateRestaurant = () => {
                                Name
                             </FormLabel>
                             <TextField
+                                required
                                 id="name"
                                 variant="outlined"
+                                defaultValue={restaurantDetails?.name}
                                 onChange={(event) => setRestaurant({ ...restaurant, name: event.target.value })}
                             />
                         </Container>
@@ -73,8 +77,10 @@ export const UpdateRestaurant = () => {
                                 Adress
                             </FormLabel>
                             <TextField
+                                required
                                 id="adress"
                                 variant="outlined"
+                                defaultValue={restaurantDetails?.adress}
                                 onChange={(event) => setRestaurant({ ...restaurant, adress: event.target.value })}
                             />
                         </Container>
@@ -83,8 +89,10 @@ export const UpdateRestaurant = () => {
                                 Phone Number
                             </FormLabel>
                             <TextField
+                                required
                                 id="phone_number"
                                 variant="outlined"
+                                defaultValue={restaurantDetails?.phone_number}
                                 onChange={(event) => setRestaurant({ ...restaurant, phone_number: event.target.value })}
                             />
                         </Container>
@@ -93,8 +101,10 @@ export const UpdateRestaurant = () => {
                                 Cuisine Type
                             </FormLabel>
                             <TextField
+                                required
                                 id="cuisine_type"
                                 variant="outlined"
+                                defaultValue={restaurantDetails?.cuisine_type}
                                 onChange={(event) => setRestaurant({ ...restaurant, cuisine_type: event.target.value })}
                             />
                         </Container>

@@ -33,7 +33,7 @@ export const RestaurantDetails = () => {
 					<p>Restaurant adress: {restaurant?.adress}</p>
                     <p>Restaurant phone number: {restaurant?.phone_number}</p>
                     <p>Restaurant cuisine type: {restaurant?.cuisine_type}</p>
-                    <p>Restaurant vegetarian friendly?: {restaurant?.is_vegetarian_friendly}</p>
+                    <p>Restaurant vegetarian friendly?: {restaurant?.is_vegetarian_friendly === true ? 'Yes': 'No'}</p>
 				</CardContent>
 				<CardActions>
 					<IconButton component={Link} sx={{ mr: 3 }} to={`/restaurants/${restaurantId}/edit`}>
