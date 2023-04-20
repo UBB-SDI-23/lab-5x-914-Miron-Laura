@@ -10,6 +10,7 @@ import {
 	Container,
 	IconButton,
 	Tooltip,
+    ListItemSecondaryAction,
 } from "@mui/material";
 
 import EditIcon from "@mui/icons-material/Edit";
@@ -24,15 +25,13 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export const RestaurantFilterByName = () => {
     const[loading, setLoading] = useState(true)
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
 
     useEffect(() => {
-    fetch(`${BACKEND_API_URL}/restaurants-ordered-by-name`)
+    fetch(`${BACKEND_API_URL}/restaurants`)
         .then(res => res.json())
         .then(data => {setRestaurants(data); setLoading(false);})
     }, []);
-
-    console.log(restaurants);
 
     
     return (
